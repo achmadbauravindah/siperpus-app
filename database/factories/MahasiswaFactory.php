@@ -18,7 +18,7 @@ class MahasiswaFactory extends Factory
         $nim = '1904111000';
         static $nimAfter = 10;
         return [
-            'nim' => $nim . $nimAfter++,
+            'nim' => $nim . ($nimAfter++),
             'nama' => $nama,
             'password' => Hash::make('123123'),
             'alamat' => 'Jl. Ini Alamatnya Mahasiswa',

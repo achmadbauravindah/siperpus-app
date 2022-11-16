@@ -16,7 +16,7 @@ class FakultasFactory extends Factory
         $fakultases = ['Ilmu Pendidikan', 'Hukum', 'Ekonomi dan Bisnis',  'Teknik', 'Ilmu Sosial dan Budaya', 'Keislaman'];
         static $count = 0;
         return [
-            'kode' => '0' . $count + 1,
+            'kode' => '0' . ($count + 1),
             'nama_fak' => $fakultases[$count++],
         ];
     }

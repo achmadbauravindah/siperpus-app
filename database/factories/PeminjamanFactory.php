@@ -21,7 +21,7 @@ class PeminjamanFactory extends Factory
         return [
             'tgl_pinjam' => '2022-11-1',
             'id_buku' => $this->faker->numberBetween(1, 30),
-            'nim_mahasiswa' => $nim . $nimAfter2++,
+            'nim_mahasiswa' => $nim . ($nimAfter2++),
         ];
     }
 }
