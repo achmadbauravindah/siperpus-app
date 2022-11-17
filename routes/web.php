@@ -167,6 +167,8 @@ Route::group(
     ['middleware' => 'auth:mahasiswa', 'prefix' => 'mahasiswa', 'as' => 'mahasiswa.'],
     function () {
         Route::get('/', [MahasiswaController::class, 'index'])->name('index');
+        Route::get('/updateProfile/{mahasiswa:nim}', [MahasiswaController::class, 'editProfileMahasiswa'])->name('editProfileMahasiswa');
+        Route::patch('/updateProfile/{mahasiswa:nim}', [MahasiswaController::class, 'updateProfileMahasiswa'])->name('updateProfileMahasiswa');
         Route::get('#profile', [MahasiswaController::class, 'index'])->name('profile');
         Route::patch('/updatePassword', [MahasiswaController::class, 'updatePassword'])->name('updatePassword');
         Route::get('/bukus/{buku:slug}', [BukuController::class, 'showForMahasiswa'])->name('showForMahasiswa');

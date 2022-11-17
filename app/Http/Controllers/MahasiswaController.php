@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreMahasiswaRequest;
 use App\Http\Requests\UpdateMahasiswaRequest;
+use App\Models\Agama;
 use App\Models\Buku;
 use App\Models\Mahasiswa;
 use App\Models\Peminjaman;
+use App\Models\Program_studi;
 use DateTime;
 use Illuminate\Support\Facades\Hash;
 
@@ -118,5 +120,22 @@ class MahasiswaController extends Controller
         }
 
         return redirect()->route('mahasiswa.profile')->with('success', 'Password telah diubah');
+    }
+    public function editProfileMahasiswa(Mahasiswa $mahasiswa)
+    {
+        $program_studis = Program_studi::all();
+        $agamas = Agama::all();
+        return view('mahasiswa.edit', compact('mahasiswa', 'program_studis', 'agamas'));
+    }
+
+    public function updateProfileMahasiswa(UpdateMahasiswaRequest $request, Mahasiswa $mahasiswa)
+    {
+        $attr = $request->all();
+        $attr['nim'] = $mahasiswa->nim;
+        $attr['password'] = $mahasiswa->password;
+
+        $mahasiswa->update($attr);
+
+        return redirect()->route('mahasiswa.profile')->with('success', 'Profile telah diubah');
     }
 }

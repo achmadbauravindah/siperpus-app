@@ -164,6 +164,11 @@
                     <div class="p-2 bd-highlight h2 text-primary">{{ $mahasiswa->alamat }}</div>
                     @endif
                 </div>
+                <form action="{{ route('mahasiswa.editProfileMahasiswa', $mahasiswa->nim) }}" method="get">
+                    @method('get')
+                    @csrf
+                    <input class="btn btn-primary form-control" type="submit" value="Edit Profile">
+                </form>
             </div>
         </div>
         <hr>
