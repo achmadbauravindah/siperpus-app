@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePeminjamanRequest;
 use App\Http\Requests\UpdatePeminjamanRequest;
+use App\Models\Buku;
 use App\Models\Mahasiswa;
 use App\Models\Peminjaman;
 use DateTime;
@@ -88,5 +89,31 @@ class PeminjamanController extends Controller
     public function destroy(Peminjaman $peminjaman)
     {
         //
+    }
+    public function peminjamanBuku(Buku $buku)
+    {
+        $mahasiswa = auth()->user();
+        if ($buku->jumlah_buku <= 0) {
+            session()->flash('error', 'Buku tidak tersedia');
+            return view('mahasiswa.buku.show', compact('buku'));
+        }
+        $tgl_pinjam = new DateTime("now");
+
+        $peminjaman_latest = Peminjaman::where('nim_mahasiswa', '=', $mahasiswa->nim)->latest()->first();
+        if (!isset($peminjaman_latest->tgl_kembali) && isset($peminjaman_latest)) {
+            session()->flash('error', 'Anda masih memiliki peminjaman, harap dikembalikan terlebih dahulu');
+            return view('mahasiswa.buku.show', compact('buku'));
+        } else {
+            $sisa_buku = $buku->jumlah_buku - 1;
+            $buku->update(array('jumlah_buku' => $sisa_buku));
+
+            Peminjaman::create(array(
+                'tgl_pinjam' => $tgl_pinjam,
+                'id_buku' => $buku->id,
+                'nim_mahasiswa' => $mahasiswa->nim
+            ));
+            session()->flash('success', 'Buku Berhasil Dipinjam');
+            return view('mahasiswa.buku.show', compact('buku'));
+        }
     }
 }

@@ -20,8 +20,9 @@ class MahasiswaController extends Controller
     public function index()
     {
         $mahasiswa = auth()->user();
-        $bukus = Buku::all();
-        return view('mahasiswa.index', compact('mahasiswa', 'bukus'));
+        $bukus = Buku::paginate(12);
+        $peminjamans = Peminjaman::where('nim_mahasiswa', '=', $mahasiswa->nim)->paginate(10);
+        return view('mahasiswa.index', compact('mahasiswa', 'bukus', 'peminjamans'));
     }
 
     public function indexAdmin()

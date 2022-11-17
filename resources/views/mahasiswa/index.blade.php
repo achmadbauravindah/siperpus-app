@@ -12,7 +12,6 @@
     <div class="container d-flex align-items-center flex-column">
         <!-- Masthead Heading-->
         <h1 class="masthead-heading text-uppercase mb-0">{{ auth()->guard('mahasiswa')->user()->nama }}</h1>
-        </h1>
         <!-- Icon Divider-->
         <div class="divider-custom divider-light">
             <div class="divider-custom-line"></div>
@@ -29,183 +28,54 @@
     </div>
 </header>
 
-<!-- KRS Section-->
-<section class="page-section" id="krs">
+<!-- DAFTAR BUKU Section-->
+<section class="page-section" id="daftar_buku">
     <div class="container">
         <!-- Section Heading-->
         <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Daftar Buku</h2>
+
         <!-- Icon Divider-->
         <div class="divider-custom">
             <div class="divider-custom-line"></div>
             <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
             <div class="divider-custom-line"></div>
         </div>
+
+        {{-- BAGIAN DAFTAR BUKU --}}
         <div class="row row-cols-1 row-cols-md-3 g-4 d-flex justify-content-between">
+            @foreach ($bukus as $buku)
             <div class="col-md-3">
                 <div class="card mb-3 card-putih kecil">
                     <div class="row g-0 ">
                         <div class="col-md-4 d-flex align-items-center">
-                            <img class=" ms-2 card-img img-fluid"
-                                src="https://i.pinimg.com/originals/37/23/90/372390f6f78977440d810380c9b08eaf.jpg"
-                                alt="gambar" />
+                            <img class=" ms-2 card-img img-fluid" src="{{ $buku->gambar }}" alt="gambar" />
                         </div>
                         <div class="col-md-8">
                             <div class="card-body ms-2">
                                 <p class="fw-bold">
-                                    OKe
+                                    {{ $buku->judul }}
+                                </p>
+                                <p>
+                                    {{ $buku->pengarang }}
                                 </p>
                                 <p class="small-text">
-                                    Oke
+                                    {{ $buku->tahun_terbit }}
                                 </p>
                                 <!-- Button edit hapus -->
                                 <div class="d-flex justify-content-end">
-                                    <!-- edit -->
-                                    <a class="bulet-biru m-1" href="edit.php?id="><i class="bi bi-eye-fill"></i></a>
+                                    <a class="bulet-biru m-1"
+                                        href="{{ route('mahasiswa.showForMahasiswa', $buku->slug) }}"><i
+                                            class="bi bi-eye-fill"></i></a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-3">
-                <div class="card mb-3 card-putih kecil">
-                    <div class="row g-0 ">
-                        <div class="col-md-4 d-flex align-items-center">
-                            <img class=" ms-2 card-img img-fluid"
-                                src="https://i.pinimg.com/originals/37/23/90/372390f6f78977440d810380c9b08eaf.jpg"
-                                alt="gambar" />
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body ms-2">
-                                <p class="fw-bold">
-                                    OKe
-                                </p>
-                                <p class="small-text">
-                                    Oke
-                                </p>
-                                <!-- Button edit hapus -->
-                                <div class="d-flex justify-content-end">
-                                    <!-- edit -->
-                                    <a class="bulet-biru m-1" href="edit.php?id="><i class="bi bi-eye-fill"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card mb-3 card-putih kecil">
-                    <div class="row g-0 ">
-                        <div class="col-md-4 d-flex align-items-center">
-                            <img class=" ms-2 card-img img-fluid"
-                                src="https://i.pinimg.com/originals/37/23/90/372390f6f78977440d810380c9b08eaf.jpg"
-                                alt="gambar" />
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body ms-2">
-                                <p class="fw-bold">
-                                    OKe
-                                </p>
-                                <p class="small-text">
-                                    Oke
-                                </p>
-                                <!-- Button edit hapus -->
-                                <div class="d-flex justify-content-end">
-                                    <!-- edit -->
-                                    <a class="bulet-biru m-1" href="edit.php?id="><i class="bi bi-eye-fill"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card mb-3 card-putih kecil">
-                    <div class="row g-0 ">
-                        <div class="col-md-4 d-flex align-items-center">
-                            <img class=" ms-2 card-img img-fluid"
-                                src="https://i.pinimg.com/originals/37/23/90/372390f6f78977440d810380c9b08eaf.jpg"
-                                alt="gambar" />
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body ms-2">
-                                <p class="fw-bold">
-                                    OKe
-                                </p>
-                                <p class="small-text">
-                                    Oke
-                                </p>
-                                <!-- Button edit hapus -->
-                                <div class="d-flex justify-content-end">
-                                    <!-- edit -->
-                                    <a class="bulet-biru m-1" href="edit.php?id="><i class="bi bi-eye-fill"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card mb-3 card-putih kecil">
-                    <div class="row g-0 ">
-                        <div class="col-md-4 d-flex align-items-center">
-                            <img class=" ms-2 card-img img-fluid"
-                                src="https://i.pinimg.com/originals/37/23/90/372390f6f78977440d810380c9b08eaf.jpg"
-                                alt="gambar" />
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body ms-2">
-                                <p class="fw-bold">
-                                    OKe
-                                </p>
-                                <p class="small-text">
-                                    Oke
-                                </p>
-                                <!-- Button edit hapus -->
-                                <div class="d-flex justify-content-end">
-                                    <!-- edit -->
-                                    <a class="bulet-biru m-1" href="edit.php?id="><i class="bi bi-eye-fill"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
-        <!-- Grid Items-->
-        <div class="row justify-content-center">
-            <div class="card p-3">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Judul</th>
-                            <th>Pengarang</th>
-                            <th>Penerbit</th>
-                            <th>Tahun Terbit</th>
-                            <th>Jumlah di Rak</th>
-                            <th>Detail</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($bukus as $buku)
-                        <tr>
-                            <th scope="row">{{ $loop->index+1 }}</th>
-                            <td>{{ $buku->judul }}</td>
-                            <td>{{ $buku->pengarang }}</td>
-                            <td>{{ $buku->penerbit }}</td>
-                            <td>{{ $buku->tahun_terbit }}</td>
-                            <td>{{ $buku->jumlah_buku }}</td>
-                            <td class="text-center">
-                                <a href="{{ route('mahasiswa.showForMahasiswa', $buku->slug) }}">
-                                    <i class="far fa-eye text-primary"></i>
-                                </a>
-                            </td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
+        <div class="d-flex justify-content-end">
+            {{$bukus->links('pagination::bootstrap-4')}}
         </div>
     </div>
 </section>
@@ -227,16 +97,30 @@
                     <thead>
                         <tr>
                             <th scope="col">No</th>
-
+                            <th scope="col">Judul Buku</th>
+                            <th scope="col">Tanggal Pinjam</th>
+                            <th scope="col">Tanggal Kembali</th>
                         </tr>
+
                     </thead>
                     <tbody>
+                        @foreach ($peminjamans as $peminjaman)
                         <tr>
-                            {{-- <th scope="row">{{ $loop->index+1 }}</th> --}}
-                            <th>oke</th>
+                            <th scope="row">{{ $loop->index+1 }}</th>
+                            <td>{{ $peminjaman->buku->judul }}</td>
+                            <td>{{ $peminjaman->tgl_pinjam }}</td>
+                            @if (!isset($peminjaman->tgl_kembali))
+                            <td>Belum Kembali</td>
+                            @else
+                            <td>{{ $peminjaman->tgl_kembali }}</td>
+                            @endif
                         </tr>
+                        @endforeach
                     </tbody>
                 </table>
+                <div class="d-flex justify-content-end">
+                    {{$peminjamans->links('pagination::bootstrap-4')}}
+                </div>
             </div>
         </div>
     </div>

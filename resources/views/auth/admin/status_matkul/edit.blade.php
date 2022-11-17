@@ -27,7 +27,6 @@
                 {{ session()->get('success') }}
             </div>
             @endif
-
             @if(session()->has('error'))
             <div class="alert alert-danger mt-4">
                 {{ session()->get('error') }}

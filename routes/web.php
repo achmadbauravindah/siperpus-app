@@ -170,5 +170,6 @@ Route::group(
         Route::get('#profile', [MahasiswaController::class, 'index'])->name('profile');
         Route::patch('/updatePassword', [MahasiswaController::class, 'updatePassword'])->name('updatePassword');
         Route::get('/bukus/{buku:slug}', [BukuController::class, 'showForMahasiswa'])->name('showForMahasiswa');
+        Route::post('/bukus/pinjam/{buku:slug}', [PeminjamanController::class, 'peminjamanBuku'])->name('peminjamanBuku');
     }
 );
