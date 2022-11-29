@@ -48,7 +48,8 @@
                 <div class="card mb-3 card-putih kecil">
                     <div class="row g-0 ">
                         <div class="col-md-4 d-flex align-items-center">
-                            <img class=" ms-2 card-img img-fluid" src="{{ $buku->gambar }}" alt="gambar" />
+                            <img class=" ms-2 card-img img-fluid" src="{{ asset('storage/' . $buku->gambar) }}"
+                                alt="gambar" />
                         </div>
                         <div class="col-md-8">
                             <div class="card-body ms-2">

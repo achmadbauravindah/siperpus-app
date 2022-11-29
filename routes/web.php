@@ -79,43 +79,6 @@ Route::group(
             }
         );
 
-        // Admin - Matakuliah
-        Route::group(
-            ['prefix' => 'matakuliahs', 'as' => 'matakuliahs.'],
-            function () {
-                Route::get('/', [MatakuliahController::class, 'indexAdmin'])->name('index');
-                Route::get('/create', [MatakuliahController::class, 'create'])->name('create');
-                Route::post('/store', [MatakuliahController::class, 'store'])->name('store');
-                Route::get('/edit/{matakuliah:kode}', [MatakuliahController::class, 'edit'])->name('edit');
-                Route::patch('/update/{matakuliah:kode}', [MatakuliahController::class, 'update'])->name('update');
-                Route::get('/destroy/{matakuliah:kode}', [MatakuliahController::class, 'destroy'])->name('destroy');
-                Route::get('/{matakuliah:kode}', [MatakuliahController::class, 'show'])->name('show');
-            }
-        );
-
-        // Admin - Status Matakuliah
-        Route::group(
-            ['prefix' => 'status-matkuls', 'as' => 'status_matkuls.'],
-            function () {
-                Route::get('/', [StatusMatkulController::class, 'indexAdmin'])->name('index');
-                Route::get('/create', [StatusMatkulController::class, 'create'])->name('create');
-                Route::post('/store', [StatusMatkulController::class, 'store'])->name('store');
-                Route::put('/update/{matakuliah:kode}', [StatusMatkulController::class, 'updateAndDelete'])->name('update_delete');
-            }
-        );
-
-        // Admin - Fakultas
-        Route::group(
-            ['prefix' => 'fakultases', 'as' => 'fakultases.'],
-            function () {
-                Route::get('/', [FakultasController::class, 'indexAdmin'])->name('index');
-                Route::get('/create', [FakultasController::class, 'create'])->name('create');
-                Route::post('/store', [FakultasController::class, 'store'])->name('store');
-                Route::get('/edit/{fakultas:kode}', [FakultasController::class, 'edit'])->name('edit');
-                Route::patch('/update/{fakultas:kode}', [FakultasController::class, 'update'])->name('update');
-                Route::get('/destroy/{fakultas:kode}', [FakultasController::class, 'destroy'])->name('destroy');
-            }
-        );
 
         // Admin - Jurusan
         Route::group(
@@ -127,35 +90,6 @@ Route::group(
                 Route::get('/edit/{jurusan:kode}', [JurusanController::class, 'edit'])->name('edit');
                 Route::patch('/update/{jurusan:kode}', [JurusanController::class, 'update'])->name('update');
                 Route::get('/destroy/{jurusan:kode}', [JurusanController::class, 'destroy'])->name('destroy');
-            }
-        );
-
-        // Admin - Program Studi
-        Route::group(
-            ['prefix' => 'program-studis', 'as' => 'program_studis.'],
-            function () {
-                Route::get('/', [ProgramStudiController::class, 'indexAdmin'])->name('index');
-                Route::get('/create', [ProgramStudiController::class, 'create'])->name('create');
-                Route::post('/store', [ProgramStudiController::class, 'store'])->name('store');
-                Route::get('/edit/{program_studi:kode}', [ProgramStudiController::class, 'edit'])->name('edit');
-                Route::patch('/update/{program_studi:kode}', [ProgramStudiController::class, 'update'])->name('update');
-                Route::get('/destroy/{program_studi:kode}', [ProgramStudiController::class, 'destroy'])->name('destroy');
-            }
-        );
-
-        // Admin - KRS
-        Route::group(
-            ['prefix' => 'krses', 'as' => 'krses.'],
-            function () {
-                Route::get('/', [KrsController::class, 'indexAdmin'])->name('index');
-            }
-        );
-
-        // Admin - KHS
-        Route::group(
-            ['prefix' => 'khses', 'as' => 'khses.'],
-            function () {
-                Route::get('/', [KhsController::class, 'indexAdmin'])->name('index');
             }
         );
     }

@@ -24,7 +24,9 @@ class StoreMahasiswaRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'nama' => 'required|string|max:255',
+            'nim' => 'required|string|min:12|unique:mahasiswas',
+            'password' => 'required|string|min:6|confirmed',
         ];
     }
 }

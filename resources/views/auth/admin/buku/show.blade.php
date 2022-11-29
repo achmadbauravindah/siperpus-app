@@ -59,7 +59,7 @@
                         <div class="form-group">
                             <label for="gambar">Gambar</label>
                             <img id="gambar" class="mt-3 mb-5" style="width: 80%"
-                                src="{{ asset('/storage/'.$buku->gambar) }}" alt="gambar" />
+                                src="{{ asset('storage/' . $buku->gambar) }}" alt="gambar" />
                         </div>
                         <a class="btn btn-primary mt-2 " type="button" href="{{ route('admin.bukus.index') }}">
                             Kembali

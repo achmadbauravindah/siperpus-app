@@ -77,8 +77,8 @@
                                 <div class="form-group mb-2">
                                     <label class="fw-bold" for="gambar" class="mt-2">Gambar</label>
                                     <br>
-                                    <img id="gambar" class="mb-5" style="width: 50%" src="{{ $buku->gambar }}"
-                                        alt="gambar" />
+                                    <img id="gambar" class="mb-5" style="width: 50%"
+                                        src="{{asset('storage/' . $buku->gambar) }}" alt="gambar" />
                                 </div>
                                 <a class="btn btn-primary mt-2 " type="button" href="{{ route('mahasiswa.index') }}">
                                     Kembali

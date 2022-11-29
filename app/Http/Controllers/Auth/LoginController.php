@@ -56,7 +56,7 @@ class LoginController extends Controller
         $this->validate($request, [
             'username'   => 'required|alpha_num|min:5',
             'password' => 'required|min:6'
-        ]);
+        ], ["username dan password is required"]);
         if (Auth::guard('mahasiswa')->attempt(['nim' => $request->username, 'password' => $request->password], $request->get('remember'))) {
             return redirect()->intended('/mahasiswa');
         }

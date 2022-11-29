@@ -60,9 +60,7 @@
                             name="nama" placeholder="nama" value="{{ old('nama') }}" autocomplete="nama" autofocus>
                     </div>
                     @error('nama')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
+                    <div class="mt-3" style="color:red;">{{ $message }}</div>
                     @enderror
                     <div class="input-field">
                         <i class="fas fa-address-card"></i>
@@ -70,9 +68,7 @@
                             placeholder="username (NIM)" value="{{ old('nim') }}" autocomplete="nim" autofocus>
                     </div>
                     @error('nim')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
+                    <div class="mt-3" style="color:red;">{{ $message }}</div>
                     @enderror
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
@@ -81,9 +77,7 @@
                             name="password" autocomplete="new-password" />
                     </div>
                     @error('password')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
+                    <div class="mt-3" style="color:red;">{{ $message }}</div>
                     @enderror
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
@@ -93,9 +87,7 @@
                             autocomplete="new-password" />
                     </div>
                     @error('password')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
+                    <div class="mt-3" style="color:red;">{{ $message }}</div>
                     @enderror
                     <button class="btn" href="{{ __('Register') }}" type="submit">R E G I S T E R</button>
                 </form>
