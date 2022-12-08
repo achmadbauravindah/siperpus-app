@@ -84,7 +84,7 @@ class RegisterController extends Controller
             'nama' => $request->nama,
             'email' => $request->email,
             'nim' => $request->nim,
-            'password' => Hash::make($request->password_register),
+            'password' => Hash::make($request->password),
         ]);
         session()->flash('success', 'Akun telah ditambahkan, Silahkan Login');
         return redirect()->route('viewMahasiswaLogin')->with('success', 'Akun telah ditambahkan, Silahkan Login');
