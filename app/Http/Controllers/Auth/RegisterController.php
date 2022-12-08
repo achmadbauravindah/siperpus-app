@@ -80,14 +80,12 @@ class RegisterController extends Controller
      */
     protected function mahasiswaRegister(StoreMahasiswaRequest $request)
     {
-        dd("Not Oke");
         Mahasiswa::create([
             'nama' => $request->nama,
             'email' => $request->email,
             'nim' => $request->nim,
             'password' => Hash::make($request->password_register),
         ]);
-        dd("OK");
         session()->flash('success', 'Akun telah ditambahkan, Silahkan Login');
         return redirect()->route('viewMahasiswaLogin')->with('success', 'Akun telah ditambahkan, Silahkan Login');
     }
