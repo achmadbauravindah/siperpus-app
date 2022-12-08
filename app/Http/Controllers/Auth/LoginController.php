@@ -53,6 +53,7 @@ class LoginController extends Controller
     }
     public function mahasiswaLogin(Request $request)
     {
+        dd("WAIT");
         $this->validate($request, [
             'username'   => 'required|alpha_num|min:5',
             'password' => 'required|min:6'
