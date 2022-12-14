@@ -100,6 +100,7 @@
                             <th scope="col">No</th>
                             <th scope="col">Judul Buku</th>
                             <th scope="col">Tanggal Pinjam</th>
+                            <th scope="col">Tanggal Tenggat</th>
                             <th scope="col">Tanggal Kembali</th>
                         </tr>
 
@@ -110,8 +111,9 @@
                             <th scope="row">{{ $loop->index+1 }}</th>
                             <td>{{ $peminjaman->buku->judul }}</td>
                             <td>{{ $peminjaman->tgl_pinjam }}</td>
+                            <td>{{ date("Y-m-d", strtotime($peminjaman->tgl_pinjam."+5 days")); }}</td>
                             @if (!isset($peminjaman->tgl_kembali))
-                            <td>Belum Kembali</td>
+                            <td>Belum Dikembalikan</td>
                             @else
                             <td>{{ $peminjaman->tgl_kembali }}</td>
                             @endif

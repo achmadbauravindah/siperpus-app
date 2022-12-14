@@ -89,11 +89,19 @@
                                 <!-- JENIS KELAMIN -->
                                 <div class="form-group">
                                     <label class="fw-bold mt-3" for="jenis_kelamin">Jenis Kelamin</label>
-                                    <option value="{{ $mahasiswa->jenis_kelamin }}">{{ $mahasiswa->jenis_kelamin == 0 ?
-                                        "Laki-laki": "Perempuan" }}</option>
                                     <select class="form-control" name="jenis_kelamin" id="jenis_kelamin">
+                                    <option value="{{ $mahasiswa->jenis_kelamin }}">
+                                    @if ($mahasiswa->jenis_kelamin === 0)
+                                    {{ "Laki-laki" }}
+                                    @elseif ($mahasiswa->jenis_kelamin === 1)
+                                    {{ "Perempuan" }}
+                                    @else
+                                    {{ "-" }}
+                                    @endif
+                                    </option>
                                         <option value="0">Laki-laki</option>
                                         <option value="1">Perempuan</option>
+                                        <option value="-1"> - </option>
                                     </select>
                                 </div>
                                 @error('jenis_kelamin')

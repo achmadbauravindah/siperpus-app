@@ -82,12 +82,17 @@ class RegisterController extends Controller
     {
         Mahasiswa::create([
             'nama' => $request->nama,
-            'email' => $request->email,
             'nim' => $request->nim,
             'password' => Hash::make($request->password),
+            'alamat' => "Belum diedit",
+            'tanggal_lahir' => '2001-1-1',
+            'jenis_kelamin' => -1,
+            'no_hp' => 000000000000,
+            'kode_agama' => 1,
+            'kode_prodi' => 11,
         ]);
-        session()->flash('success', 'Akun telah ditambahkan, Silahkan Login');
-        return redirect()->route('viewMahasiswaLogin')->with('success', 'Akun telah ditambahkan, Silahkan Login');
+        session()->flash('success', 'Silahkan Login, jangan lupa edit profile');
+        return redirect()->route('viewMahasiswaLogin');
     }
 
     public function viewMahasiswaRegister()

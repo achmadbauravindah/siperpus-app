@@ -101,9 +101,18 @@
                                         $total_denda = $total_denda + $denda; // Total Denda
                                         $status = 'Denda';
                                         // DIPINJAM
-                                        if ($denda <= 0) { $status='Dipinjam' ; $denda=0; $total_denda=0; } } else {
-                                            $status='Dikembalikan' ; $denda=0; $total_denda=0;} @endphp {{-- TABEL --}}
-                                            <th scope="row">{{ $loop->index+1 }}
+                                            if ($denda <= 0) {
+                                                $harus_kembali = date("Y-m-d", strtotime($peminjaman->tgl_pinjam."+5 days"));
+                                                $status='Dipinjam ('.$harus_kembali.')' ; $denda=0; $total_denda=0;
+                                            }
+                                        }
+                                        else {
+                                            $status='Dikembalikan' ;
+                                            $denda=0;
+                                            $total_denda=0;
+                                        }
+                                        @endphp
+                                            {{-- TABEL --}} <th scope="row">{{ $loop->index+1 }}
                                             </th>
                                             {{-- JUDUL --}}
                                             <td>{{ $peminjaman->buku->judul }}</td>
