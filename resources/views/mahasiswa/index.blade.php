@@ -101,17 +101,47 @@
                             <th scope="col">Judul Buku</th>
                             <th scope="col">Tanggal Pinjam</th>
                             <th scope="col">Tanggal Tenggat</th>
+                            <th scope="col">Denda</th>
                             <th scope="col">Tanggal Kembali</th>
                         </tr>
 
                     </thead>
                     <tbody>
+                        {{-- LOGIC --}}
+                        @php
+                        $total_denda = 0;
+                        @endphp
                         @foreach ($peminjamans as $peminjaman)
                         <tr>
+                            {{-- Menghitung Denda dan Status --}}
+                            @php
+                            if (!$peminjaman->tgl_kembali) {
+                            $str_tgl_peminjaman = $peminjaman->tgl_pinjam;
+                            $hari_ini = new DateTime("now");
+                            $tgl_pinjam = new DateTime($str_tgl_peminjaman);
+
+                            $selisih_hari = $hari_ini->diff($tgl_pinjam)->format("%r%a"); //3
+                            $jumlah_hari_terlambat = -5 - (int)$selisih_hari; # 5 adalah batas waktu pinjam
+                            // DENDA
+                            $denda = 1000 * $jumlah_hari_terlambat; // Denda Tiap Pinnjaman
+                            $total_denda = $total_denda + $denda; // Total Denda
+                            $status = 'Denda';
+                            // DIPINJAM
+                            if ($denda <= 0) { $harus_kembali=date("Y-m-d", strtotime($peminjaman->tgl_pinjam."+5 days"));
+                                $status='Dipinjam ('.$harus_kembali.')' ; $denda=0; $total_denda=0;
+                                }
+                                }
+                                else {
+                                $status='Dikembalikan' ;
+                                $denda=0;
+                                $total_denda=0;
+                                }
+                                @endphp
                             <th scope="row">{{ $loop->index+1 }}</th>
                             <td>{{ $peminjaman->buku->judul }}</td>
                             <td>{{ $peminjaman->tgl_pinjam }}</td>
                             <td>{{ date("Y-m-d", strtotime($peminjaman->tgl_pinjam."+5 days")); }}</td>
+                            <td>{{ $total_denda }}</td>
                             @if (!isset($peminjaman->tgl_kembali))
                             <td>Belum Dikembalikan</td>
                             @else
