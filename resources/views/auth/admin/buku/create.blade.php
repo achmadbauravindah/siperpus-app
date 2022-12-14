@@ -88,7 +88,7 @@
 
                         <!-- GAMBAR -->
                         <div class="form-group">
-                            <label for="gambar">Jumlah Buku</label>
+                            <label for="gambar">Gambar</label>
                             <input type="file" class="form-control" id="gambar" name="gambar"
                                 value="{{ old('gambar')}}">
                         </div>

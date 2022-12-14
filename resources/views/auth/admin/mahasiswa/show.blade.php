@@ -47,7 +47,15 @@
                         <div class="form-group">
                             <label for="jenis_kelamin">Jenis Kelamin</label>
                             <input type="text" class="form-control" id="jenis_kelamin" name="jenis_kelamin"
-                                value="{{ (($mahasiswa->jenis_kelamin) == 0 ? 'Laki-laki' : 'Perempuan' ) }}" readonly>
+                                value="
+                                @if ($mahasiswa->jenis_kelamin === 0)
+                                {{ "Laki-laki" }}
+                                @elseif ($mahasiswa->jenis_kelamin === -1)
+                                {{ "Perempuan" }}
+                                @else
+                                {{ "-" }}
+                                @endif
+                                " readonly>
                         </div>
                         <!-- AGAMA -->
                         <div class="form-group">
